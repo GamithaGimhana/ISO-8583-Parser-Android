@@ -1,57 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="12dp"
-    android:background="#F5F5F5">
+    android:background="#F8F9FA">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ISO8583 Parser"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginBottom="6dp"/>
-
-    <EditText
-        android:id="@+id/inputMessage"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:hint="ISO8583 message"
-        android:background="#FFFFFF"
-        android:padding="10dp"
-        android:gravity="top"
-        android:inputType="textMultiLine"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/btnParse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Parse Message"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ISO8583 Parser"
+            android:textColor="#1A73E8"
+            android:textSize="24sp"
+            android:fontFamily="sans-serif-medium"
+            android:layout_marginBottom="24dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Parsed Output"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="6dp"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/outputContainer"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="#E0E0E0">
 
-    </ScrollView>
+            <EditText
+                android:id="@+id/inputMessage"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:hint="Paste raw ISO8583 message here..."
+                android:background="@android:color/transparent"
+                android:padding="16dp"
+                android:gravity="top"
+                android:fontFamily="monospace"
+                android:textSize="14sp"
+                android:inputType="textMultiLine"/>
+        </com.google.android.material.card.MaterialCardView>
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnParse"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Analyze Message"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            app:cornerRadius="12dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"/> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parsed Fields"
+        android:textSize="14sp"
+        android:textColor="#70757a"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
+        android:layout_marginBottom="12dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/outputContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp" />
+
+            </androidx.core.widget.NestedScrollView>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
